@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    #about-message {
+      border-radius: 10px;
+      font-size: 20px;
+      width: 600px;
+      height: 300px;
+      background-color: #ffffff;
+      margin: 100px auto;
+      color: #000000;
+      font-size: 15px;
+      overflow-y: auto;
+    }
+    header {
+      background-color: #343a40;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+    }
+    .button-container {
+      display: flex;
+      justify-content: space-around;
+      width: 50%;
+    }
+    .button-container span {
+      color: white;
+      cursor: pointer;
+      padding: 10px;
+    }
+    .container {
+      text-align: center;
+      margin-top: 50px;
+    }
+    .title {
+      font-size: 2.5em;
+      color: #343a40;
+    }
+    .hidden {
+      display: none;
+    }
+    .visible {
+      display: block;
+    }
+    .rent-form-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .rent-form {
+      width: 300px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+    footer {
+      background-color: #343a40;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .horizontal-line {
+      border-top: 1px solid white;
+      margin: 10px 0;
+    }
+    .spaced-text {
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+    }
+    .no-spacing {
+      margin: 0;
+    }
+    #chat-box {
+      width: 400px;
+      margin: 20px auto;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    #chat-box-header {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    #chat-box-messages {
+      height: 200px;
+      overflow-y: scroll;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    #chat-box-input {
+      width: calc(100% - 60px);
+      padding: 8px;
+      box-sizing: border-box;
+    }
+    #chat-box-send {
+      width: 50px;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+    #rentalData, #offeredCarsData {
+      margin: 20px auto;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      width: 80%;
+      background-color: #f9f9f9;
+    }
+    #rentalData p, #offeredCarsData p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="button-container">
+      <span id="Home">Home Page</span>
+      <span id="Rent">Rent A Car</span>
+      <span id="Offer">Offer a Car for Rent</span>
+      <span id="About">About Us</span>
+      <span id="Chat">Chat with us</span>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1 class="title">ElectraRide Rentals</h1>
+  </div>
+
+  <div id="HomeSection" class="visible">
+    <div id="about-message">
+      <h2>About Us</h2>
+      <p>Welcome to ElectraRide Rentals, the ultimate destination for eco-friendly travel. We provide a variety of electric cars to cater to all your rental needs, from short trips to long journeys. Our mission is to offer a seamless rental experience while promoting sustainability. Join us in driving the future, one electric car at a time.</p>
+    </div>
+  </div>
+
+  <div id="RentSection" class="hidden">
+    <div class="rent-form-container">
+      <form id="rentForm">
+        <h2>Rent a Car</h2>
+        <div class="form-group">
+          <label for="rentCarType">Car Type</label>
+          <select id="rentCarType" name="carType" required>
+            <option value="Tesla Model S">Tesla Model S</option>
+            <option value="Tesla Model 3">Tesla Model 3</option>
+            <option value="Tesla Model X">Tesla Model X</option>
+            <option value="Tesla Model Y">Tesla Model Y</option>
+            <option value="Nissan Leaf">Nissan Leaf</option>
+            <option value="Chevrolet Bolt EV">Chevrolet Bolt EV</option>
+            <option value="Ford Mustang Mach-E">Ford Mustang Mach-E</option>
+            <option value="BMW i3">BMW i3</option>
+            <option value="BMW i4">BMW i4</option>
+            <option value="Audi e-tron">Audi e-tron</option>
+            <option value="Audi Q4 e-tron">Audi Q4 e-tron</option>
+            <option value="Volkswagen ID.4">Volkswagen ID.4</option>
+            <option value="Porsche Taycan">Porsche Taycan</option>
+            <option value="Hyundai Kona Electric">Hyundai Kona Electric</option>
+            <option value="Hyundai Ioniq 5">Hyundai Ioniq 5</option>
+            <option value="Kia Niro EV">Kia Niro EV</option>
+            <option value="Kia EV6">Kia EV6</option>
+            <option value="Rivian R1T">Rivian R1T</option>
+            <option value="Lucid Air">Lucid Air</option>
+            <option value="Mercedes EQS">Mercedes EQS</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="rentalPeriod">Rental Period (days)</label>
+          <input type="number" id="rentalPeriod" name="rentalPeriod" min="1" required>
+        </div>
+        <div class="form-group">
+          <label for="renterName">Your Name</label>
+          <input type="text" id="renterName" name="renterName" required>
+        </div>
+        <div class="form-group">
+          <label for="renterEmail">Your Email</label>
+          <input type="email" id="renterEmail" name="renterEmail" required>
+        </div>
+        <button type="button" id="rentSubmit">Rent Now</button>
+      </form>
+    </div>
+    <div id="rentalData">
+      <h2>Recently Rented Cars</h2>
+      <!-- Rental data will be appended here -->
+    </div>
+  </div>
+
+  <div id="OfferSection" class="hidden">
+    <div class="rent-form-container">
+      <form id="offerForm">
+        <h2>Offer a Car for Rent</h2>
+        <div class="form-group">
+          <label for="offerCarType">Car Type</label>
+          <select id="offerCarType" name="carType" required>
+            <option value="Tesla Model S">Tesla Model S</option>
+            <option value="Tesla Model 3">Tesla Model 3</option>
+            <option value="Tesla Model X">Tesla Model X</option>
+            <option value="Tesla Model Y">Tesla Model Y</option>
+            <option value="Nissan Leaf">Nissan Leaf</option>
+            <option value="Chevrolet Bolt EV">Chevrolet Bolt EV</option>
+            <option value="Ford Mustang Mach-E">Ford Mustang Mach-E</option>
+            <option value="BMW i3">BMW i3</option>
+            <option value="BMW i4">BMW i4</option>
+            <option value="Audi e-tron">Audi e-tron</option>
+            <option value="Audi Q4 e-tron">Audi Q4 e-tron</option>
+            <option value="Volkswagen ID.4">Volkswagen ID.4</option>
+            <option value="Porsche Taycan">Porsche Taycan</option>
+            <option value="Hyundai Kona Electric">Hyundai Kona Electric</option>
+            <option value="Hyundai Ioniq 5">Hyundai Ioniq 5</option>
+            <option value="Kia Niro EV">Kia Niro EV</option>
+            <option value="Kia EV6">Kia EV6</option>
+            <option value="Rivian R1T">Rivian R1T</option>
+            <option value="Lucid Air">Lucid Air</option>
+            <option value="Mercedes EQS">Mercedes EQS</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="carDetails">Car Details</label>
+          <textarea id="carDetails" name="carDetails" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="ownerName">Your Name</label>
+          <input type="text" id="ownerName" name="ownerName" required>
+        </div>
+        <div class="form-group">
+          <label for="ownerEmail">Your Email</label>
+          <input type="email" id="ownerEmail" name="ownerEmail" required>
+        </div>
+        <button type="button" id="offerSubmit">Offer Car</button>
+      </form>
+    </div>
+    <div id="offeredCarsData">
+      <h2>Offered Cars</h2>
+      <!-- Offered cars data will be appended here -->
+    </div>
+  </div>
+
+  <div id="ChatSection" class="hidden">
+    <div id="chat-box">
+      <div id="chat-box-header">Chat with us</div>
+      <div id="chat-box-messages"></div>
+      <input type="text" id="chat-box-input" placeholder="Type your message...">
+      <button id="chat-box-send">Send</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 ElectraRide Rentals. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Function to display available cars from localStorage
+    function displayAvailableCars() {
+      const cars = JSON.parse(localStorage.getItem('offeredCars')) || [];
+      const offeredCarsDiv = document.getElementById('offeredCarsData');
+      offeredCarsDiv.innerHTML = '<h2>Offered Cars</h2>';
+      cars.forEach(car => {
+        const carDiv = document.createElement('div');
+        carDiv.innerHTML = `<p>Car Type: ${car.carType}</p>
+                            <p>Car Details: ${car.carDetails}</p>
+                            <p>Owner Name: ${car.ownerName}</p>
+                            <p>Owner Email: ${car.ownerEmail}</p>`;
+        offeredCarsDiv.appendChild(carDiv);
+      });
+    }
+
+    // Initialize the page by displaying available cars and rental data
+    document.addEventListener('DOMContentLoaded', function() {
+      displayAvailableCars();
+      displayRentalData();
+    });
+
+    // Function to display rental data from localStorage
+    function displayRentalData() {
+      const rentals = JSON.parse(localStorage.getItem('rentals')) || [];
+      const rentalDataDiv = document.getElementById('rentalData');
+      rentalDataDiv.innerHTML = '<h2>Recently Rented Cars</h2>';
+      rentals.forEach(rental => {
+        const rentalDiv = document.createElement('div');
+        rentalDiv.innerHTML = `<p>Car Type: ${rental.carType}</p>
+                               <p>Rental Period: ${rental.rentalPeriod} days</p>
+                               <p>Renter Name: ${rental.renterName}</p>
+                               <p>Renter Email: ${rental.renterEmail}</p>`;
+        rentalDataDiv.appendChild(rentalDiv);
+      });
+    }
+
+    // Handle Rent Form submission
+    document.getElementById('rentSubmit').onclick = function() {
+      const form = document.getElementById('rentForm');
+      const carType = form.rentCarType.value;
+      const rentalPeriod = form.rentalPeriod.value;
+      const renterName = form.renterName.value;
+      const renterEmail = form.renterEmail.value;
+
+      // Create rental object
+      const rental = { carType, rentalPeriod, renterName, renterEmail };
+
+      // Get existing rentals from localStorage
+      const rentals = JSON.parse(localStorage.getItem('rentals')) || [];
+      rentals.push(rental);
+      
+      // Save updated rentals to localStorage
+      localStorage.setItem('rentals', JSON.stringify(rentals));
+      
+      // Alert user
+      alert(`Renting ${carType} for ${rentalPeriod} days. Thank you, ${renterName}.`);
+
+      // Reset the form
+      form.reset();
+      
+      // Refresh rental data display
+      displayRentalData();
+    };
+
+    // Handle Offer Form submission
+    document.getElementById('offerSubmit').onclick = function() {
+      const form = document.getElementById('offerForm');
+      const carType = form.offerCarType.value;
+      const carDetails = form.carDetails.value;
+      const ownerName = form.ownerName.value;
+      const ownerEmail = form.ownerEmail.value;
+
+      // Create car object
+      const car = { carType, carDetails, ownerName, ownerEmail };
+      
+      // Get existing cars from localStorage
+      const cars = JSON.parse(localStorage.getItem('offeredCars')) || [];
+      cars.push(car);
+      
+      // Save updated cars to localStorage
+      localStorage.setItem('offeredCars', JSON.stringify(cars));
+      
+      // Alert user
+      alert(`Your car offer has been submitted. Thank you, ${ownerName}.`);
+
+      // Reset the form
+      form.reset();
+      
+      // Refresh available cars display
+      displayAvailableCars();
+    };
+
+    // Handle Chat Form submission
+    document.getElementById('chat-box-send').onclick = function() {
+      const input = document.getElementById('chat-box-input');
+      const message = input.value;
+      const messagesDiv = document.getElementById('chat-box-messages');
+      const newMessage = document.createElement('div');
+      newMessage.textContent = message;
+      messagesDiv.appendChild(newMessage);
+      input.value = '';
+    };
+
+    // Handle Navigation
+    document.getElementById('Home').onclick = function() {
+      document.getElementById('HomeSection').classList.add('visible');
+      document.getElementById('HomeSection').classList.remove('hidden');
+      document.getElementById('RentSection').classList.add('hidden');
+      document.getElementById('RentSection').classList.remove('visible');
+      document.getElementById('OfferSection').classList.add('hidden');
+      document.getElementById('OfferSection').classList.remove('visible');
+      document.getElementById('ChatSection').classList.add('hidden');
+      document.getElementById('ChatSection').classList.remove('visible');
+    };
+
+    document.getElementById('Rent').onclick = function() {
+      document.getElementById('HomeSection').classList.add('hidden');
+      document.getElementById('HomeSection').classList.remove('visible');
+      document.getElementById('RentSection').classList.add('visible');
+      document.getElementById('RentSection').classList.remove('hidden');
+      document.getElementById('OfferSection').classList.add('hidden');
+      document.getElementById('OfferSection').classList.remove('visible');
+      document.getElementById('ChatSection').classList.add('hidden');
+      document.getElementById('ChatSection').classList.remove('visible');
+      displayAvailableCars();
+    };
+
+    document.getElementById('Offer').onclick = function() {
+      document.getElementById('HomeSection').classList.add('hidden');
+      document.getElementById('HomeSection').classList.remove('visible');
+      document.getElementById('RentSection').classList.add('hidden');
+      document.getElementById('RentSection').classList.remove('visible');
+      document.getElementById('OfferSection').classList.add('visible');
+      document.getElementById('OfferSection').classList.remove('hidden');
+      document.getElementById('ChatSection').classList.add('hidden');
+      document.getElementById('ChatSection').classList.remove('visible');
+    };
+
+    document.getElementById('Chat').onclick = function() {
+      document.getElementById('HomeSection').classList.add('hidden');
+      document.getElementById('HomeSection').classList.remove('visible');
+      document.getElementById('RentSection').classList.add('hidden');
+      document.getElementById('RentSection').classList.remove('visible');
+      document.getElementById('OfferSection').classList.add('hidden');
+      document.getElementById('OfferSection').classList.remove('visible');
+      document.getElementById('ChatSection').classList.add('visible');
+      document.getElementById('ChatSection').classList.remove('hidden');
+    };
+  </script>
+</body>
+</html>
